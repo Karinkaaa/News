@@ -12,7 +12,7 @@ const useStyles = makeStyles({
             marginRight: 10,
             fontSize: 18
         },
-        width: "40%"
+        minWidth: "25%"
     }
 });
 
@@ -49,7 +49,7 @@ SelectCategory.defaultProps = {
 };
 
 SelectCategory.propTypes = {
-    category: PropTypes.object.isRequired,
+    category: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
     onChooseCategory: PropTypes.func.isRequired
 };
 

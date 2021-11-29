@@ -10,13 +10,13 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
     div: {
         display: "flex",
-        placeContent: "space-between",
         margin: "0 0 20px"
     }
 });
 
 const News = ({ articles, country, category, fetchNews, onChooseCountry, onChooseCategory }) => {
     const classes = useStyles();
+
     useEffect(() => {
         fetchNews();
     }, [fetchNews]);
@@ -65,8 +65,8 @@ News.propTypes = {
             publishedAt: PropTypes.string.isRequired
         }).isRequired
     ).isRequired,
-    country: PropTypes.object.isRequired,
-    category: PropTypes.object.isRequired,
+    country: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    category: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
     fetchNews: PropTypes.func.isRequired,
     onChooseCountry: PropTypes.func.isRequired,
     onChooseCategory: PropTypes.func.isRequired

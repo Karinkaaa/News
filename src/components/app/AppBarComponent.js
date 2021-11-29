@@ -29,7 +29,10 @@ const AppBarComponent = () => {
     return (
         <AppBar position={"fixed"} className={classes.appBar}>
             <Toolbar className={classes.toolBar}>
-                <IconButton className={classes.iconBtn}>
+                <IconButton
+                    className={classes.iconBtn}
+                    onClick={() => window.scrollTo(0, 0)}
+                >
                     <Home/>
                 </IconButton>
 

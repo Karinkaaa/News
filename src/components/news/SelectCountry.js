@@ -12,7 +12,8 @@ const useStyles = makeStyles({
             marginRight: 10,
             fontSize: 18
         },
-        width: "40%"
+        minWidth: "25%",
+        marginRight: 50
     }
 });
 
@@ -60,7 +61,7 @@ SelectCountry.defaultProps = {
 };
 
 SelectCountry.propTypes = {
-    country: PropTypes.object.isRequired,
+    country: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
     onChooseCountry: PropTypes.func.isRequired
 };
 

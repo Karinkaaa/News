@@ -1,0 +1,1 @@
+export const NEWS_API = "http://newsapi.org/v2/top-headlines";

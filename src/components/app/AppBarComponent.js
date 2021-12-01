@@ -6,20 +6,20 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: "#660000"
+        backgroundColor: "#2E3336"
     },
     toolBar: {
-        paddingLeft: 15
+        paddingLeft: 5
     },
     iconBtn: {
         margin: 0,
         "&:hover": {
-            color: "#E1F436FF"
+            color: theme.palette.success.light
         }
     },
     title: {
         flexGrow: 1,
-        paddingLeft: 15
+        paddingLeft: 10
     }
 }));
 
@@ -37,7 +37,7 @@ const AppBarComponent = () => {
                 </IconButton>
 
                 <Typography variant={"h5"} className={classes.title}>
-                    World News
+                    GNews
                 </Typography>
             </Toolbar>
         </AppBar>

@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import News from "../../components/news";
 import { getNews } from "../../actions/newsSaga";
-import { chooseCategory, chooseCountry } from "../../actions/news";
+import { changeArticlesPerPage, chooseCountry } from "../../actions/news";
 
 const mapStateToProps = (state) => {
     return {
         articles: state.news.articles,
         country: state.news.country,
-        category: state.news.category
+        articlesPerPage: state.news.articlesPerPage
     };
 };
 
@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(chooseCountry(country));
             dispatch(getNews());
         },
-        onChooseCategory: (category) => {
-            dispatch(chooseCategory(category));
+        onChangeArticlesPerPage: (articlesPerPage) => {
+            dispatch(changeArticlesPerPage(articlesPerPage));
             dispatch(getNews());
         }
     };

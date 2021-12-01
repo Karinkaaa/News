@@ -1,4 +1,4 @@
-import { CHOOSE_CATEGORY, CHOOSE_COUNTRY, SET_NEWS } from "../../utils/constants/news";
+import { CHANGE_ARTICLES_PER_PAGE, CHOOSE_COUNTRY, SET_NEWS } from "../../utils/constants/news";
 
 export const setNews = (articles) => ({
     type: SET_NEWS,
@@ -10,7 +10,7 @@ export const chooseCountry = (country) => ({
     country
 });
 
-export const chooseCategory = (category) => ({
-    type: CHOOSE_CATEGORY,
-    category
+export const changeArticlesPerPage = (articlesPerPage) => ({
+    type: CHANGE_ARTICLES_PER_PAGE,
+    articlesPerPage
 });

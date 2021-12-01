@@ -2,19 +2,28 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import key from "weak-key";
 import { Container, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import OneNew from "./OneNew";
 import SelectCountry from "./SelectCountry";
-import SelectCategory from "./SelectCategory";
-import { makeStyles } from "@material-ui/core/styles";
+import ArticlesPerPage from "./ArticlesPerPage";
 
 const useStyles = makeStyles({
     div: {
         display: "flex",
         margin: "0 0 20px"
+    },
+    option: {
+        fontSize: 16,
+        "& > span": {
+            marginRight: 10,
+            fontSize: 18
+        },
+        minWidth: "25%",
+        marginRight: 50
     }
 });
 
-const News = ({ articles, country, category, fetchNews, onChooseCountry, onChooseCategory }) => {
+const News = ({ articles, country, articlesPerPage, fetchNews, onChooseCountry, onChangeArticlesPerPage }) => {
     const classes = useStyles();
 
     useEffect(() => {
@@ -25,12 +34,15 @@ const News = ({ articles, country, category, fetchNews, onChooseCountry, onChoos
         <Container>
             <div className={classes.div}>
                 <SelectCountry
+                    style={classes.option}
                     country={country}
                     onChooseCountry={(country) => onChooseCountry(country)}
                 />
-                <SelectCategory
-                    category={category}
-                    onChooseCategory={(category) => onChooseCategory(category)}
+
+                <ArticlesPerPage
+                    style={classes.option}
+                    articlesPerPage={articlesPerPage}
+                    onChangeArticlesPerPage={onChangeArticlesPerPage}
                 />
             </div>
 
@@ -50,26 +62,23 @@ const News = ({ articles, country, category, fetchNews, onChooseCountry, onChoos
 News.propTypes = {
     articles: PropTypes.arrayOf(
         PropTypes.shape({
-            source: PropTypes.shape({
-                id: PropTypes.oneOfType([
-                    PropTypes.string,
-                    PropTypes.object
-                ]),
-                name: PropTypes.string.isRequired
-            }).isRequired,
-            author: PropTypes.string,
             title: PropTypes.string.isRequired,
-            description: PropTypes.string,
+            description: PropTypes.string.isRequired,
+            content: PropTypes.string.isRequired,
             url: PropTypes.string.isRequired,
-            urlToImage: PropTypes.string,
-            publishedAt: PropTypes.string.isRequired
+            image: PropTypes.string.isRequired,
+            publishedAt: PropTypes.string.isRequired,
+            source: PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired
+            }).isRequired
         }).isRequired
     ).isRequired,
     country: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
-    category: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    articlesPerPage: PropTypes.number.isRequired,
     fetchNews: PropTypes.func.isRequired,
     onChooseCountry: PropTypes.func.isRequired,
-    onChooseCategory: PropTypes.func.isRequired
+    onChangeArticlesPerPage: PropTypes.func.isRequired
 };
 
 export default News;

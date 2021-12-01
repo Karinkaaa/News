@@ -1,13 +1,15 @@
-import { CHOOSE_CATEGORY, CHOOSE_COUNTRY, SET_NEWS } from "../../utils/constants/news";
+import { CHANGE_ARTICLES_PER_PAGE, CHOOSE_COUNTRY, SET_NEWS } from "../../utils/constants/news";
 
 const initialState = {
     articles: [],
+    query: "a",
     country: {
         code: "UA",
         label: "Ukraine",
         phone: "380"
     },
-    category: {}
+    articlesPerPage: 5,
+    from: new Date().toJSON().slice(0, 10)
 };
 
 const News = (state = initialState, action) => {
@@ -24,10 +26,10 @@ const News = (state = initialState, action) => {
                 country: action.country
             };
         }
-        case CHOOSE_CATEGORY: {
+        case CHANGE_ARTICLES_PER_PAGE: {
             return {
                 ...state,
-                category: action.category
+                articlesPerPage: action.articlesPerPage
             };
         }
         default:

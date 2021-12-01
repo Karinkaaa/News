@@ -1,1 +1,1 @@
-export const NEWS_API = "https://newsapi.org/v2/top-headlines";
+export const NEWS_API = "https://gnews.io/api/v4/search";

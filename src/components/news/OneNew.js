@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 const OneNew = ({ oneNew }) => {
     const classes = useStyles();
-    const { source, author, title, description, url, urlToImage, publishedAt } = oneNew;
+    const { title, description, url, image, publishedAt, source } = oneNew;
 
     return (
         <Box border={1} p={5} className={classes.root}>
@@ -47,53 +47,51 @@ const OneNew = ({ oneNew }) => {
 
             <Divider className={classes.divider}/>
 
-
-            <Typography
-                variant={"h6"}
-                color={"primary"}
-            >
-                {author}
-            </Typography>
-
             {
-                author && <Divider className={classes.divider}/>
+                title && (
+                    <>
+                        <Typography
+                            variant={"h4"}
+                            color={"primary"}
+                        >
+                            {title}
+                        </Typography>
+                        <Divider className={classes.divider}/>
+                    </>
+                )
             }
 
-            <Typography
-                variant={"h4"}
-                color={"inherit"}
-            >
-                {title}
-            </Typography>
-
             {
-                title && <Divider className={classes.divider}/>
+                description && (
+                    <>
+                        <Typography
+                            variant={"h5"}
+                            color={"inherit"}
+                        >
+                            {description}
+                        </Typography>
+                        <Divider className={classes.divider}/>
+                    </>
+                )
             }
 
-            <Typography
-                variant={"subtitle2"}
-                color={"inherit"}
-            >
-                {description}
-            </Typography>
-
             {
-                description && <Divider className={classes.divider}/>
+                url && (
+                    <Link
+                        variant={"subtitle2"}
+                        color={"secondary"}
+                        href={url}
+                    >
+                        {url}
+                    </Link>
+                )
             }
 
-            <Link
-                variant={"subtitle2"}
-                color={"secondary"}
-                href={url}
-            >
-                {url}
-            </Link>
-
             {
-                urlToImage && (
+                image && (
                     <CardMedia
                         className={classes.media}
-                        image={urlToImage}
+                        image={image}
                     />
                 )
             }
@@ -103,19 +101,15 @@ const OneNew = ({ oneNew }) => {
 
 OneNew.propTypes = {
     oneNew: PropTypes.shape({
-        source: PropTypes.shape({
-            id: PropTypes.oneOfType([
-                PropTypes.string,
-                PropTypes.object
-            ]),
-            name: PropTypes.string.isRequired
-        }).isRequired,
-        author: PropTypes.string,
         title: PropTypes.string.isRequired,
-        description: PropTypes.string,
+        description: PropTypes.string.isRequired,
         url: PropTypes.string.isRequired,
-        urlToImage: PropTypes.string,
-        publishedAt: PropTypes.string.isRequired
+        image: PropTypes.string.isRequired,
+        publishedAt: PropTypes.string.isRequired,
+        source: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired
+        }).isRequired
     }).isRequired
 };
 

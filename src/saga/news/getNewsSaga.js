@@ -8,17 +8,18 @@ import { GET_NEWS_SAGA } from "../../utils/constants/newsSaga";
 
 export function* getNewsSaga() {
     try {
-        const { country, category } = yield select(state => state.news);
+        const { query, country, articlesPerPage, from } = yield select(state => state.news);
 
         const result = yield call(
             axios.get,
             NEWS_API,
             {
                 params: {
-                    category: category.value,
+                    q: query,
                     country: country === "" ? undefined : country.code.toLowerCase(),
-                    from: new Date().toJSON().slice(0, 10),
-                    apiKey: API_KEY
+                    max: articlesPerPage,
+                    from,
+                    token: API_KEY
                 }
             }
         );

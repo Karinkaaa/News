@@ -1,3 +1,9 @@
+## [Demo version](https://karinkaaa.github.io/News/)
+
+#### Preview:
+
+![alt text](https://github.com/Karinkaaa/News/blob/gnews/public/preview.png?raw=true)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

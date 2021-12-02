@@ -74,7 +74,12 @@ News.propTypes = {
             }).isRequired
         }).isRequired
     ).isRequired,
-    country: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    country: PropTypes.shape({
+        code: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        phone: PropTypes.string,
+        suggested: PropTypes.bool
+    }).isRequired,
     articlesPerPage: PropTypes.number.isRequired,
     fetchNews: PropTypes.func.isRequired,
     onChooseCountry: PropTypes.func.isRequired,

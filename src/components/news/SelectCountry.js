@@ -17,7 +17,7 @@ const SelectCountry = ({ style, countries, country, onChooseCountry }) => (
         options={countries}
         autoHighlight
         getOptionLabel={(option) => option.label ? option.label : ""}
-        onChange={(e, v) => onChooseCountry(v ? v : "")}
+        onChange={(e, v) => onChooseCountry(v ? v : { code: "", label: "" })}
         value={country}
         renderOption={(option) => (
             <React.Fragment>
@@ -45,7 +45,12 @@ SelectCountry.defaultProps = {
 
 SelectCountry.propTypes = {
     style: PropTypes.string.isRequired,
-    country: PropTypes.objectOf(PropTypes.string.isRequired).isRequired,
+    country: PropTypes.shape({
+        code: PropTypes.string.isRequired,
+        label: PropTypes.string.isRequired,
+        phone: PropTypes.string,
+        suggested: PropTypes.bool
+    }).isRequired,
     onChooseCountry: PropTypes.func.isRequired
 };
 

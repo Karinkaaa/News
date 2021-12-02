@@ -10,7 +10,7 @@ const ArticlesPerPage = ({ style, articlesPerPage, onChangeArticlesPerPage }) =>
         type={"number"}
         InputProps={{ inputProps: { min: 1, max: 10 } }}
         value={articlesPerPage}
-        onChange={(e) => parseInt(onChangeArticlesPerPage(e.target.value))}
+        onChange={(e) => onChangeArticlesPerPage(parseInt(e.target.value))}
     />
 );
 
